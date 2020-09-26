@@ -1,5 +1,5 @@
 # Calculator
-```php
+```kotlin
 Author: Nguyen Cong Dung - 17103487 - PM22.05
 ```
 
