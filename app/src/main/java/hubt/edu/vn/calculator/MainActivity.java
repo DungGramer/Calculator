@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnPercent, btnPlus, btnMinus, btnMultiply, btnDivision, btnEqual, btnClear, btnDot, btnBracket;
+    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnPercent, btnPlus, btnMinus, btnMultiply, btnDivision, btnEqual, btnClear, btnDel, btnDot, btnBracket;
     TextView tvInput, tvOutput;
     String process;
     boolean checkBracket = false;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnEqual = findViewById(R.id.btnEqual);
 
         btnClear = findViewById(R.id.btnClear);
+        btnDel = findViewById(R.id.btnDel);
         btnDot = findViewById(R.id.btnDot);
         btnPercent = findViewById(R.id.btnPercent);
         btnBracket = findViewById(R.id.btnBracket);
@@ -53,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 tvInput.setText("");
                 tvOutput.setText("");
+            }
+        });
+
+        btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                process = tvInput.getText().toString();
+                if (process.length() >= 1) {
+                    process = process.substring(0, process.length() - 1);
+                    tvInput.setText(process);
+                }
             }
         });
 
@@ -208,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                 process = process.replaceAll("%", "/100");
                 process = process.replaceAll("--", "+");
                 process = process.replaceAll("\\+\\+", "+");
-                Context rhino= Context.enter();
+                Context rhino = Context.enter();
 
                 rhino.setOptimizationLevel(-1);
 
@@ -220,10 +233,12 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     finalResult = "Syntax Error";
                 }
-                if(finalResult.lastIndexOf(".0") == finalResult.length() - 2) {
+                if (finalResult.lastIndexOf(".0") == finalResult.length() - 2) {
                     finalResult = finalResult.replace(".0", "");
                 }
-                tvOutput.setText(finalResult);
+
+                tvOutput.setText(process == "" ? "" : finalResult);
+
             }
         });
 
