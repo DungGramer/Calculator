@@ -221,6 +221,8 @@ public class MainActivity extends AppCompatActivity {
                 process = process.replaceAll("%", "/100");
                 process = process.replaceAll("--", "+");
                 process = process.replaceAll("\\+\\+", "+");
+                process = process.replaceAll("\\-\\+", "-");
+                process = process.replaceAll("\\+\\-", "-");
                 Context rhino = Context.enter();
 
                 rhino.setOptimizationLevel(-1);
