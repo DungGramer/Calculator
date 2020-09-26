@@ -218,10 +218,10 @@ public class MainActivity extends AppCompatActivity {
                     Scriptable scriptable = rhino.initStandardObjects();
                     finalResult = rhino.evaluateString(scriptable, process, "javascript", 1, null).toString();
                 } catch (Exception e) {
-                    finalResult = "Error";
+                    finalResult = "Syntax Error";
                 }
                 if(finalResult.lastIndexOf(".0") == finalResult.length() - 2) {
-                    finalResult = finalResult.replaceAll(".0", "");
+                    finalResult = finalResult.replace(".0", "");
                 }
                 tvOutput.setText(finalResult);
             }
