@@ -9,7 +9,7 @@ Author: Nguyen Cong Dung - 17103487 - PM22.05
 ✅ Simple interface design  
 
 ## Usage
-Download [caculator.apk](https://raw.githubusercontent.com/DungGramer/Calculator/master/Calculator.apk). Enable the “Unknown Sources” setting and install APK.
+Download [Caculator.apk](https://raw.githubusercontent.com/DungGramer/Calculator/master/Calculator.apk). Enable the “Unknown Sources” setting and install APK.
 
 ## Preview
 Caculator simple | Syntax Error | Big number| Divide by zero
